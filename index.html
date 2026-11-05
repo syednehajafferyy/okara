@@ -44,7 +44,7 @@ nav.sc .bar{background:color-mix(in srgb,var(--card) 92%,transparent);box-shadow
 .about ul{list-style:none;padding:0;display:grid;gap:12px;margin-top:20px}.about li{padding-left:18px;border-left:3px solid var(--g)}
 @media(min-width:900px){.about{grid-template-columns:1fr 1fr}}
 .cats{display:grid;gap:14px}.cat{position:relative;border-radius:var(--r);overflow:hidden;min-height:240px;border:0;color:#fff;text-align:left;cursor:pointer;padding:24px;display:flex;flex-direction:column;justify-content:flex-end;font-family:inherit}
-.cat svg{position:absolute;inset:0;width:100%;height:100%;transition:transform .5s}.cat:hover svg{transform:scale(1.05)}
+.cat svg,.cat img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .5s}.cat:hover svg,.cat:hover img{transform:scale(1.05)}
 .cat span{position:relative}.cat::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(15,35,20,.78),transparent 65%)}
 .cat h3,.cat p{position:relative;z-index:1}.cat p{opacity:.9;font-size:.93rem;margin-top:6px}
 @media(min-width:800px){.cats{grid-template-columns:1.4fr 1fr 1fr}.cat{min-height:340px}}
@@ -52,7 +52,7 @@ nav.sc .bar{background:color-mix(in srgb,var(--card) 92%,transparent);box-shadow
 .tab.on{background:var(--g);border-color:var(--g);color:#fff}
 .pg{display:grid;gap:18px;grid-template-columns:repeat(auto-fill,minmax(min(100%,280px),1fr))}
 .pc{background:var(--card);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column}
-.pc .im{aspect-ratio:4/3;background:var(--s)}.pc .im svg{width:100%;height:100%;display:block}
+.pc .im{aspect-ratio:4/3;background:var(--s)}.pc .im svg,.pc .im img{width:100%;height:100%;object-fit:cover;display:block}
 .pc .bd{padding:18px;display:flex;flex-direction:column;gap:10px;flex:1}.pc p{color:var(--m);font-size:.93rem}
 .pr{font:700 1.2rem 'Bricolage Grotesque','Plus Jakarta Sans',system-ui,sans-serif;color:var(--g)}.row{display:flex;gap:10px;align-items:center;margin-top:auto;flex-wrap:wrap}
 .q{display:inline-flex;align-items:center;border:1.5px solid var(--line);border-radius:999px;background:var(--card)}
@@ -81,7 +81,7 @@ footer{background:#244a2d;color:#dfe6dc;padding:56px 0 28px}.fg{display:grid;gap
 .ov{position:fixed;inset:0;background:rgba(15,25,18,.5);z-index:70;opacity:0;pointer-events:none;transition:.3s}.ov.open{opacity:1;pointer-events:auto}
 .dr{position:fixed;top:0;right:0;bottom:0;width:min(440px,100%);background:var(--bg);z-index:80;transform:translateX(100%);transition:transform .35s;display:flex;flex-direction:column;padding-top:env(safe-area-inset-top,0)}.dr.open{transform:none}
 .dh{display:flex;justify-content:space-between;align-items:center;padding:18px 20px;border-bottom:1px solid var(--line)}.dl{flex:1;overflow:auto;padding:8px 20px}
-.ci{display:grid;grid-template-columns:72px 1fr;gap:12px;padding:14px 0;border-bottom:1px solid var(--line)}.ci .t{width:72px;height:72px;border-radius:12px;overflow:hidden;background:var(--s)}.ci .t svg{width:100%;height:100%}
+.ci{display:grid;grid-template-columns:72px 1fr;gap:12px;padding:14px 0;border-bottom:1px solid var(--line)}.ci .t{width:72px;height:72px;border-radius:12px;overflow:hidden;background:var(--s)}.ci .t svg,.ci .t img{width:100%;height:100%;object-fit:cover;display:block}
 .df{padding:18px 20px calc(18px + env(safe-area-inset-bottom,0));border-top:1px solid var(--line);display:grid;gap:10px}.tot{display:flex;justify-content:space-between;font-weight:700;font-size:1.1rem}
 .x{border:0;background:none;color:var(--m);cursor:pointer;font-size:.85rem;text-decoration:underline;min-height:32px}
 .toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0));transform:translate(-50%,120px);background:var(--g2);color:#fff;padding:13px 22px;border-radius:999px;z-index:100;transition:.35s;max-width:calc(100% - 32px);font-weight:600}.toast.show{transform:translate(-50%,0)}
@@ -158,13 +158,14 @@ footer{background:#244a2d;color:#dfe6dc;padding:56px 0 28px}.fg{display:grid;gap
 const CONFIG={phone:"+92 000 0000000",whatsapp:"920000000000",email:"info@example.com",currency:"PKR",delivery:500,
 bank:"Bank name: [edit]  |  Account title: [edit]  |  Account no: [edit]. Send proof of transfer on WhatsApp after placing the order."};
 const PRODUCTS=[
-{id:1,cat:"mixers",name:"Hydraulic Feed Mixer (TMR)",desc:"Mixes a full ration in one batch with a hydraulic drive.",price:100000,det:"Capacity and power requirements to be added."},
-{id:2,cat:"scales",name:"Digital Livestock Weigh Scale",desc:"Platform scale with a digital readout, made for standing cattle.",price:50000,det:"Platform size and weighing capacity to be added."},
-{id:3,cat:"scales",name:"Weight Indicator Display",desc:"Separate display unit that shows the platform's reading.",price:15000,det:"Compatible platforms to be added."},
-{id:4,cat:"acc",name:"Dairy Farm Accessory Set",desc:"A starter set of everyday items for the dairy shed.",price:5000,det:"List of included items to be added."},
-{id:5,cat:"acc",name:"Feeding Accessory",desc:"Keeps the feed lane tidy and the ration within reach.",price:3000,det:"Size and material to be added."},
-{id:6,cat:"acc",name:"Milking Shed Accessory",desc:"A practical extra for the milking area.",price:2500,det:"Size and material to be added."}];
+{id:1,cat:"mixers",name:"Hydraulic Feed Mixer (TMR)",desc:"Mixes a full ration in one batch with a hydraulic drive.",price:100000,det:"Capacity and power requirements to be added.",img:"/images/tmr-feed-mixer.jpg"},
+{id:2,cat:"scales",name:"Digital Livestock Weigh Scale",desc:"Platform scale with a digital readout, made for standing cattle.",price:50000,det:"Platform size and weighing capacity to be added.",img:"/images/livestock-scale.jpg"},
+{id:3,cat:"scales",name:"Weight Indicator Display",desc:"Separate display unit that shows the platform's reading.",price:15000,det:"Compatible platforms to be added.",img:"/images/weight-indicator.jpg"},
+{id:4,cat:"acc",name:"Dairy Farm Accessory Set",desc:"A starter set of everyday items for the dairy shed.",price:5000,det:"List of included items to be added.",img:"/images/milk-cooling-tank.jpg"},
+{id:5,cat:"acc",name:"Feeding Accessory",desc:"Keeps the feed lane tidy and the ration within reach.",price:3000,det:"Size and material to be added.",img:"/images/batch-pasteurizer.jpg"},
+{id:6,cat:"acc",name:"Milking Shed Accessory",desc:"A practical extra for the milking area.",price:2500,det:"Size and material to be added.",img:"/images/milking-machine.jpg"}];
 const CATS={mixers:["Hydraulic Feed Mixers (TMR)","Blend forage, grain and supplements into one even ration.","#2f5d3a"],scales:["Digital Weigh Scales","Record how much each animal weighs.","#3f6b52"],acc:["Dairy Farm Accessories","Smaller tools for feeding, milking and shed work.","#586b3a"]};
+const CAT_IMGS={mixers:"/images/tmr-feed-mixer.jpg",scales:"/images/livestock-scale.jpg",acc:"/images/milk-cooling-tank.jpg"};
 /* ===== ART (illustrative SVG scenes; swap for photos) ===== */
 const cow=(x=0)=>`<g class="cow" transform="translate(${x} 0)"><g class="legs"><rect x="70" y="150" width="12" height="46" rx="5" fill="#5b4234"/><rect x="96" y="150" width="12" height="46" rx="5" fill="#5b4234"/><rect x="198" y="150" width="12" height="46" rx="5" fill="#5b4234"/><rect x="224" y="150" width="12" height="46" rx="5" fill="#5b4234"/></g>
 <ellipse cx="150" cy="130" rx="100" ry="46" fill="#f4f1ea"/><path d="M95 105q30-20 55-5q-5 40-40 45q-30-10-15-40z M190 100q30-5 40 25q-10 25-35 20q-15-20-5-45z" fill="#5b4234"/><path d="M236 108q35-30 56-12q6 30-18 44q-30 6-38-32z" fill="#f4f1ea"/><ellipse cx="282" cy="132" rx="22" ry="26" fill="#f4f1ea"/><ellipse cx="290" cy="148" rx="14" ry="10" fill="#e9b7a8"/><path d="M262 100q-12-18-4-26M286 98q10-18 22-18" stroke="#5b4234" stroke-width="5" fill="none" stroke-linecap="round"/><circle cx="276" cy="124" r="3.5" fill="#222"/><path d="M52 118q-24 10-18 50" stroke="#5b4234" stroke-width="5" fill="none" stroke-linecap="round"/></g>`;
@@ -187,14 +188,14 @@ function setQ(id,q){const i=cart.find(c=>c.id===id);if(!i)return;i.q=Math.max(0,
 /* ===== RENDER ===== */
 $("#heroScene").innerHTML=heroScene;$("#aboutPic").innerHTML=farm("#d7e4d6","#7fa688");$("#tmrPic").innerHTML=mixer("#3a6b46");
 $("#cowStage").innerHTML=`<svg id="cs" viewBox="0 0 560 330" class=""><rect width="560" height="330" fill="#dfe8d9"/><rect y="270" width="560" height="60" fill="#c3d2bf"/><g transform="translate(170 47)">${cow(0)}</g><g class="plat"><rect x="210" y="255" width="280" height="18" rx="4" fill="#9aa59a"/><rect x="210" y="243" width="280" height="14" rx="3" fill="#c3ccc2"/></g><rect x="495" y="160" width="48" height="112" rx="4" fill="#3f5a47"/><rect class="dsp" x="500" y="170" width="38" height="24" rx="3" fill="#1f4a2c"/><text id="cst" x="519" y="187" font-size="11" fill="#9be0a8" text-anchor="middle" font-family="monospace">---</text></svg>`;
-$("#catGrid").innerHTML=Object.entries(CATS).map(([k,v])=>`<button class="cat" data-cat="${k}">${art[k](v[2])}<h3>${v[0]}</h3><p>${v[1]}</p></button>`).join("");
+$("#catGrid").innerHTML=Object.entries(CATS).map(([k,v])=>`<button class="cat" data-cat="${k}"><img src="${CAT_IMGS[k]}" alt="${v[0]}"><h3>${v[0]}</h3><p>${v[1]}</p></button>`).join("");
 let filt="all";
 $("#tabs").innerHTML=[["all","All"],["mixers","Feed Mixers"],["scales","Weigh Scales"],["acc","Accessories"]].map(([k,l])=>`<button class="tab" data-f="${k}">${l}</button>`).join("");
 function renderProducts(){$$(".tab").forEach(t=>t.classList.toggle("on",t.dataset.f===filt));
-$("#pg").innerHTML=PRODUCTS.filter(p=>filt==="all"||p.cat===filt).map(p=>`<article class="pc"><div class="im">${art[p.cat](CATS[p.cat][2])}</div><div class="bd"><h3>${p.name}</h3><p>${p.desc}</p><div class="pr">${money(p.price)}</div><button class="lk" data-det="${p.id}">Product details</button><div class="dt" id="d${p.id}">${p.det}</div>
+$("#pg").innerHTML=PRODUCTS.filter(p=>filt==="all"||p.cat===filt).map(p=>`<article class="pc"><div class="im"><img src="${p.img}" alt="${p.name}"></div><div class="bd"><h3>${p.name}</h3><p>${p.desc}</p><div class="pr">${money(p.price)}</div><button class="lk" data-det="${p.id}">Product details</button><div class="dt" id="d${p.id}">${p.det}</div>
 <div class="row"><div class="q" data-qid="${p.id}"><button data-m="-1" aria-label="Decrease">&minus;</button><span>1</span><button data-m="1" aria-label="Increase">+</button></div><button class="btn sm" data-add="${p.id}" style="flex:1">Add to Cart</button></div></div></article>`).join("")}
 function render(){$("#cnt").textContent=count();
-$("#dl").innerHTML=cart.length?cart.map(i=>{const p=PRODUCTS.find(x=>x.id===i.id);return`<div class="ci"><div class="t">${art[p.cat](CATS[p.cat][2])}</div><div><b>${p.name}</b><div style="color:var(--m);font-size:.9rem">${money(p.price)} each</div><div class="row" style="margin-top:8px"><div class="q"><button data-cm="${p.id}" data-d="-1" aria-label="Decrease">&minus;</button><span>${i.q}</span><button data-cm="${p.id}" data-d="1" aria-label="Increase">+</button></div><b>${money(p.price*i.q)}</b><button class="x" data-rm="${p.id}">Remove</button></div></div></div>`}).join(""):`<p style="color:var(--m);padding:30px 0">Your cart is empty.</p>`;
+$("#dl").innerHTML=cart.length?cart.map(i=>{const p=PRODUCTS.find(x=>x.id===i.id);return`<div class="ci"><div class="t"><img src="${p.img}" alt="${p.name}"></div><div><b>${p.name}</b><div style="color:var(--m);font-size:.9rem">${money(p.price)} each</div><div class="row" style="margin-top:8px"><div class="q"><button data-cm="${p.id}" data-d="-1" aria-label="Decrease">&minus;</button><span>${i.q}</span><button data-cm="${p.id}" data-d="1" aria-label="Increase">+</button></div><b>${money(p.price*i.q)}</b><button class="x" data-rm="${p.id}">Remove</button></div></div></div>`}).join(""):`<p style="color:var(--m);padding:30px 0">Your cart is empty.</p>`;
 $("#df").innerHTML=`<div class="tot"><span>Subtotal</span><span>${money(sub())}</span></div><button class="btn" id="goCo" ${cart.length?"":"disabled style='opacity:.5'"}>Proceed to Checkout</button><button class="btn o" id="cont">Continue Shopping</button>`;
 if($("#co").style.display==="block")renderCo()}
 /* ===== DRAWER / NAV ===== */
