@@ -40,7 +40,7 @@ nav.sc .bar{background:color-mix(in srgb,var(--card) 92%,transparent);box-shadow
 @media(min-width:900px){.hg{grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);min-height:680px}.ht{padding:150px 40px 80px max(40px,calc((100vw - 1200px)/2 + 20px));align-self:center}.hv{aspect-ratio:auto}.hv::before{right:auto;bottom:0;height:auto;width:240px;background:linear-gradient(90deg,var(--g),rgba(47,93,58,0))}}
 /* generic */
 .sh{display:grid;gap:12px;margin-bottom:36px;max-width:640px}.sh p{color:var(--m)}
-.about{display:grid;gap:40px;align-items:center}.about .pic{border-radius:28px;overflow:hidden;background:var(--s);aspect-ratio:5/4}
+.about{display:grid;gap:40px;align-items:center}.about .pic{border-radius:28px;overflow:hidden;background:var(--s);aspect-ratio:5/4}.about .pic img,.about .pic svg{width:100%;height:100%;object-fit:cover;display:block}
 .about ul{list-style:none;padding:0;display:grid;gap:12px;margin-top:20px}.about li{padding-left:18px;border-left:3px solid var(--g)}
 @media(min-width:900px){.about{grid-template-columns:1fr 1fr}}
 .cats{display:grid;gap:14px}.cat{position:relative;border-radius:var(--r);overflow:hidden;min-height:240px;border:0;color:#fff;text-align:left;cursor:pointer;padding:24px;display:flex;flex-direction:column;justify-content:flex-end;font-family:inherit}
@@ -61,7 +61,7 @@ nav.sc .bar{background:color-mix(in srgb,var(--card) 92%,transparent);box-shadow
 .dt{display:none;font-size:.9rem;color:var(--m);border-top:1px dashed var(--line);padding-top:10px}.dt.open{display:block}
 .tmr{background:var(--g);color:#fff;border-radius:32px;margin:0 12px;overflow:hidden}
 .tmr .wrap{display:grid;gap:32px;align-items:center;padding-top:48px;padding-bottom:48px}.tmr p{opacity:.9;margin:14px 0}
-.tmr .pic{border-radius:22px;overflow:hidden;background:#244a2d}.tmr .btn{background:#fff;color:var(--g);border-color:#fff}.tmr .btn.o{background:transparent;color:#fff}
+.tmr .pic{border-radius:22px;overflow:hidden;background:#244a2d;aspect-ratio:4/3}.tmr .pic img,.tmr .pic svg{width:100%;height:100%;object-fit:cover;display:block}.tmr .btn{background:#fff;color:var(--g);border-color:#fff}.tmr .btn.o{background:transparent;color:#fff}
 .steps{display:grid;gap:10px;margin:18px 0 24px;list-style:none;padding:0;counter-reset:s}.steps li{counter-increment:s;display:flex;gap:12px}.steps li::before{content:counter(s);flex:none;width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,.18);display:grid;place-items:center;font-weight:700;font-size:.85rem}
 @media(min-width:900px){.tmr .wrap{grid-template-columns:1.1fr 1fr;padding:64px 56px}.tmr{margin:0 24px}}
 .wg{display:grid;gap:28px;align-items:center}.wst{background:var(--s);border-radius:28px;overflow:hidden}.wst svg{display:block;width:100%}
@@ -186,7 +186,7 @@ let toastT;const toast=m=>{const t=$("#toast");t.textContent=m;t.classList.add("
 function add(id,q){q=Math.floor(+q);if(!(q>=1&&q<=99))return toast("Choose a quantity from 1 to 99");const i=cart.find(c=>c.id===id);if(i)i.q=Math.min(99,i.q+q);else cart.push({id,q});save();render();toast(PRODUCTS.find(p=>p.id===id).name+" added to cart")}
 function setQ(id,q){const i=cart.find(c=>c.id===id);if(!i)return;i.q=Math.max(0,Math.min(99,q));if(!i.q)cart=cart.filter(c=>c.id!==id);save();render()}
 /* ===== RENDER ===== */
-$("#heroScene").innerHTML=heroScene;$("#aboutPic").innerHTML=farm("#d7e4d6","#7fa688");$("#tmrPic").innerHTML=mixer("#3a6b46");
+$("#heroScene").innerHTML=heroScene;$("#aboutPic").innerHTML='<img src="/images/about-facility.jpg" alt="Dairy Innovations Okara Facility">';$("#tmrPic").innerHTML='<img src="/images/tmr-action.jpg" alt="What a TMR mixer does">';
 $("#cowStage").innerHTML=`<svg id="cs" viewBox="0 0 560 330" class=""><rect width="560" height="330" fill="#dfe8d9"/><rect y="270" width="560" height="60" fill="#c3d2bf"/><g transform="translate(170 47)">${cow(0)}</g><g class="plat"><rect x="210" y="255" width="280" height="18" rx="4" fill="#9aa59a"/><rect x="210" y="243" width="280" height="14" rx="3" fill="#c3ccc2"/></g><rect x="495" y="160" width="48" height="112" rx="4" fill="#3f5a47"/><rect class="dsp" x="500" y="170" width="38" height="24" rx="3" fill="#1f4a2c"/><text id="cst" x="519" y="187" font-size="11" fill="#9be0a8" text-anchor="middle" font-family="monospace">---</text></svg>`;
 $("#catGrid").innerHTML=Object.entries(CATS).map(([k,v])=>`<button class="cat" data-cat="${k}"><img src="${CAT_IMGS[k]}" alt="${v[0]}"><h3>${v[0]}</h3><p>${v[1]}</p></button>`).join("");
 let filt="all";
